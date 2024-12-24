@@ -3,22 +3,19 @@ POST http://localhost:4004/odata/v4/catalog/Books
 Content-Type: application/json
 
 {
-    "ID": 2,
-  "title": "My First CAP Book",
-  "author": "Jane Doe",
-  "stock": 2
+  "ID": 3,
+  "title": "Unknown Book",
+  "authorID": 99,   // Non-existent authorID
+  "stock": 10
 }
 
 
 ###PUT  http://localhost:4004/odata/v4/catalog/Books(1)
-PUT http://localhost:4004/odata/v4/catalog/Books(2)
+PATCH  http://localhost:4004/odata/v4/catalog/Books(1)
 Content-Type: application/json
 
 {
- "ID": 2,
-      "title": "My First CAP Book",
-      "author": "Jane Doe",
-      "stock": 2222
+  "stock": 120
 }
 
 
@@ -27,7 +24,26 @@ POST http://localhost:4004/odata/v4/catalog/Authors
 Content-Type: application/json
 
 {
-  "ID": 1,
-  "name": "J.K. Rowling",
+  "ID": 2,
+  "name": "George Orwell",
   "country": "UK"
+}
+
+#######
+POST http://localhost:4004/odata/v4/catalog/IncreaseStock
+Content-Type: application/json
+
+{
+  "bookID": 1,
+  "quantity": 10
+}
+
+
+
+########
+POST  http://localhost:4004/odata/v4/catalog/DeleteBooks
+Content-Type: application/json
+
+{
+  "bookID" : 1
 }
